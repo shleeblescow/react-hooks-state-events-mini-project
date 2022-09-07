@@ -1,9 +1,20 @@
 import React from "react";
+import Task from "./Task";
+import { v4 as uuid } from "uuid";
 
-function TaskList() {
-  return (
+
+function TaskList({ TASKS, onTakeOutTheTrash }) {
+
+   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {TASKS.map((eachTask) => (
+        <Task 
+          key={uuid()}
+          category={eachTask.category} 
+          text={eachTask.text}
+          onTakeOutTheTrash={onTakeOutTheTrash}
+        />
+      ))}
     </div>
   );
 }
